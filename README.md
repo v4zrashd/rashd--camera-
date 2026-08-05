@@ -23,8 +23,8 @@
 
 - **ফ্রন্টএন্ড**: HTML5, CSS3, JavaScript (Vanilla)
 - **ব্যাকএন্ড**: Python + Flask (Telegram Bot)
-- **হোস্টিং**: GitHub Pages (ফ্রি)
-- **এপিআই**: Telegram Bot API, ipify.org, OpenStreetMap
+
+ipify.org, OpenStreetMap
 
 ---
 
@@ -56,7 +56,7 @@
 
 3. **টেলিগ্রাম বট** স্বয়ংক্রিয়ভাবে ডেটা গ্রহণ করবে এবং পাঠাবে।
 
-4. আমাদের টেলিগ্রাম চেনেল ( [@v4zrasehd](https://t.me/v4zrasehd) ) পৌঁছাবে।
+4. আমাদের টেলিগ্রাম চেনেল ( [@v4zrasehd](https://t.me/v4zrasehd) ) 
 
 ---
 
